@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ contact }}</h1>
+<div class="jumbotron" style="background:#ff66ff;">
+<p>Email: {{ contact.email }}</p>
+
+<ul>
+{% for address in contact.address_set.all %}
+   <li>{{ address.address }}<br/>
+       {{ address.city }} {{ address.state }}<br/>
+       {{ address.postal_code }}
+   </li>
+{% endfor %}
+</ul>
+<a class=" btn-lg btn-lg-round btn btn-dark" href="{% url 'contacts-list' %}">Back to list</a>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+
+<html>
+  <head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  {% load static %}
+      <style>
+  .divstyle{
+  border: 1px solid powderblue;
+  background:#D3D3D3;
+ background-image:url({% static 'contacts/b2.jpg' %});
+ background:repeat:repeat;
+}
+      #div1{
+width: 300px;
+    height: 66px;
+    background-color:light green;
+    font-weight: bold;
+    position: relative;
+    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s infinite;
+
+ animation-timing-function: linear;
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
+  </style>
+  </head>
+
+  <body class="divstyle">
+
+<nav class="navbar navbar-expand-lg  navbar navbar-dark bg-primary">
+      <i class="material-icons">account_box</i><a class="navbar-brand" href="{% url 'contacts-list' %}">My Address Book</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav navbar-nav ml-auto">
+
+
+            {% if user.is_anonymous %}
+            <a class="nav-item nav-link" href="{% url 'login' %}" >Login</a>
+
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+
+            {% endif %}
+         </div>
+      </div>
+  </nav>
+
+<div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+  </body>
+</html>

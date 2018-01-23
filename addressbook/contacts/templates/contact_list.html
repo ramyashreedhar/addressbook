@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--<nav class="navbar navbar-expand-lg  navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="{% url 'contacts-list' %}">Ramya's Contacts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'contacts-list' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+
+
+    </ul>
+
+  </div>
+</nav>-->
+
+
+    <div id="div1" style="border:4px ;" class="btn btn-outline-info"> <h2 style = "text-align:center;vertical-align:middle;color:blue;">My Contacts List</h2>
+
+    </div>
+
+<div class="jumbotron" style="background:#ff66ff;">
+          <ul class="list-group">
+  {% for contact in object_list %}
+    <li class="list-group-item">
+      <a href="{{ contact.get_absolute_url }}">{{ contact }}</a>
+      (<a href="{% url 'contacts-edit' pk=contact.id %}">Edit</a>)
+    </li>
+  {% endfor %}
+</ul>
+    <br>
+<br>
+
+<a  class="btn btn-success btn-lg btn-lg-round" href="{% url 'contacts-new' %}">Add Contact</a>
+</div>
+
+
+{% endblock %}
